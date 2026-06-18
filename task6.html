@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Form</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#ff6b6b,#6c5ce7,#00cec9,#fdcb6e);
+    background-size:400% 400%;
+    animation:gradientBG 8s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.signup-box{
+    width:400px;
+    padding:35px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+.signup-box h2{
+    text-align:center;
+    color:white;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+.signup-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:#6c5ce7;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.signup-btn:hover{
+    transform:scale(1.05);
+}
+
+.message{
+    margin-top:15px;
+    text-align:center;
+    color:white;
+    font-weight:bold;
+}
+
+.login-link{
+    text-align:center;
+    margin-top:15px;
+}
+
+.login-link a{
+    color:white;
+    text-decoration:none;
+}
+
+.login-link a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:450px){
+    .signup-box{
+        width:90%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="signup-box">
+
+    <h2>📝 Create Account</h2>
+
+    <div class="input-group">
+        <input type="text" id="fullname" placeholder="Full Name">
+    </div>
+
+    <div class="input-group">
+        <input type="email" id="email" placeholder="Email Address">
+    </div>
+
+    <div class="input-group">
+        <input type="password" id="password" placeholder="Password">
+    </div>
+
+    <div class="input-group">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    </div>
+
+    <button class="signup-btn" onclick="signup()">
+        Sign Up
+    </button>
+
+    <div class="message" id="message"></div>
+
+    <div class="login-link">
+        <p>Already have an account?
+        <a href="#">Login</a></p>
+    </div>
+
+</div>
+
+<script>
+
+function signup(){
+
+    let name = document.getElementById("fullname").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if(name === "" || email === "" || password === "" || confirmPassword === ""){
+        document.getElementById("message").innerHTML =
+        "❌ Please fill all fields";
+        return;
+    }
+
+    if(password !== confirmPassword){
+        document.getElementById("message").innerHTML =
+        "❌ Passwords do not match";
+        return;
+    }
+
+    document.getElementById("message").innerHTML =
+    "✅ Account Created Successfully!";
+}
+
+</script>
+
+</body>
+</html>
